@@ -33,13 +33,12 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
 
     #Этот метод описывает действи при нажатии кнопки
     def btnClicked(self):
-        #
-        self.deman = threading.Thread(target=os.system("Python Lab_start.py"))
+        #os.system("Python Lab_start.py")
+        self.Windos()
+        #self.deman = threading.Thread(target=self.Windos())
         # Запускаем новый поток
-        self.deman.start()
+        #self.deman.start()
 
-
-
-
-
-
+    def Windos(self):
+        self.window = Window.Window()  # Создаём объект класса
+        self.window.show()  # Показываем окно

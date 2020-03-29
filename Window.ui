@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>KursachMaster</class>
  <widget class="QMainWindow" name="KursachMaster">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -34,6 +37,9 @@
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
