@@ -23,7 +23,7 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
 
 
 
-    #Этот метод описывает действи при нажатии кнопки
+    #Этот метод описывает действи при нажатии кнопки 1
     def btnClicked(self):
         self.window =Window1.Window() # Создаём объект класса
         self.window.show()  # Показываем ок
