@@ -43,8 +43,8 @@ class World():
     #Эта функция записывает значение переменных в документ
     def save(self):
         #Активируем файл
-        doc = DocxTemplate("Kursovik.docx")
+        doc = DocxTemplate("Rezalts\Lab_1.docx")
         #Производим запись переменных в файл
         doc.render(self.b)
         #Сохраняем документ
-        doc.save("Kursovik.docx")
+        doc.save("Rezalts\Lab_1.docx")
