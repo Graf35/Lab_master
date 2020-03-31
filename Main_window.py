@@ -14,7 +14,7 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         super().__init__()
         self.setupUi(self)
         # Прописываем действие на нажатие кнопки
-        self.pushButton.clicked.connect(self.btnClicked)
+        self.pushButton.clicked.connect(self.btnClicked1)
         self.pushButton_2.clicked.connect(self.btnClicked)
         self.pushButton_3.clicked.connect(self.btnClicked)
         self.pushButton_4.clicked.connect(self.btnClicked)
@@ -24,6 +24,10 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
 
 
     #Этот метод описывает действи при нажатии кнопки 1
-    def btnClicked(self):
+    def btnClicked1(self):
         self.window =Window1.Window() # Создаём объект класса
         self.window.show()  # Показываем ок
+
+    # Заглушка
+    def btnClicked(self):
+        pass

@@ -59,10 +59,10 @@ class Window(QtWidgets.QMainWindow, ui):
     def prog(self):
         self.label_2.setText("Продолжаю расчёт")
         self.clas.experience_1()
-
-
-
-
-
-
-
+        self.clas.experience_2()
+        self.clas.experience_3()
+        self.clas.experience_4()
+        self.clas.experience_5()
+        self.clas.experience_6()
+        self.clas.steam()
+        self.clas.chart()
