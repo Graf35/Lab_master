@@ -7,8 +7,8 @@ from Lab.Lab_1.File import *
 #Импортируем модуль logging. Он необходим для возможности логирования.
 from logging import info
 from statistics import mean
-from matplotlib import pyplot as plt
-from math import log, pi
+import matplotlib.pyplot as plt
+import math
 from Sourse import Tab_1
 
 
@@ -39,7 +39,7 @@ class Lab_1():
         # Делаем запись в журнале
         info("Начат расчёт лаботаторной работы 'Свободная конвекция'.")
         #Объявляем значение диаметра трубопровода модели
-        self.d=40
+        self.d=0.04
         #Объявляем давление
         self.P1=1
         #Объявляем значение длинны модели трубопровода
@@ -62,20 +62,24 @@ class Lab_1():
         # Температура в точках модели
         t=[47, 48, 49, 52, 54, 53, 51, 51, 49, 46]
         #площадь поверхности теплообмена
-        F = pi * self.d * self.l
-        #Средняя температура на поверхности модели
-        tcp= mean(t)
-        #безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
-        self.Nu1= Tab_1("T", tcp, "a") * self.d / Tab_1("T", tcp, "Lamd")
-        #безразмерное число Рэлея
-        self.Ra1= Tab_1("T", tcp, "Pr") * ((9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
-            Tab_1("T", tcp, "v")) ** 2)
-        #Общая теплота
-        Q=U*I
-        #теплота, отведенная излучением
-        Qi=5.67*self.sourse["stp"]*abs(((tcp+273)/100)**4-((self.sourse["tin"]-tcp+273)/100)**4)*F
-        #теплота Q, отводимая от поверхности, Вт, отдается конвекцией
-        Qk=Q-Qi
+        F = math.pi * self.d * self.l
+        # Средняя температура на поверхности модели
+        tcp = mean(t)
+        # Общая теплота
+        Q = U * I
+        # теплота, отведенная излучением
+        Qi = 5.67 * 0.05 * abs(
+            ((tcp + 273) / 100) ** 4 - ((self.sourse["tin"] - tcp + 273) / 100) ** 4) * F
+        # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
+        Qk = Q - Qi
+        # Коэфициент теплоотдачи
+        a = Qk / (abs(tcp - self.sourse["tin"]) * F)
+        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
+        self.Nu1 = a * self.d / (Tab_1("T", tcp, "Lamd") / 10 ** 2)
+        # безразмерное число Рэлея
+        self.Ra1 = Tab_1("T", tcp, "Pr") * (
+                    (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
+                (Tab_1("T", tcp, "v") / 10 ** 6)) ** 2)
 
     # Эта функция обрабатывает результаты второго опыта
     def experience_2 (self):
@@ -86,20 +90,24 @@ class Lab_1():
         # Температура в точках модели
         t=[94, 96, 99, 103, 106, 107, 101, 100, 98, 96]
         # площадь поверхности теплообмена
-        F = pi * self.d * self.l
+        F = math.pi * self.d * self.l
         # Средняя температура на поверхности модели
         tcp= mean(t)
+        # Общая теплота
+        Q = U * I
+        # теплота, отведенная излучением
+        Qi = 5.67 * 0.05 * abs(
+            ((tcp + 273) / 100) ** 4 - ((self.sourse["tin"] - tcp + 273) / 100) ** 4) * F
+        # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
+        Qk = Q - Qi
+        #Коэфициент теплоотдачи
+        a=Qk/(abs(tcp - self.sourse["tin"])*F)
         #безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
-        self.Nu2= Tab_1("T", tcp, "a") * self.d / Tab_1("T", tcp, "Lamd")
+        self.Nu2= a * self.d / (Tab_1("T", tcp, "Lamd")/10**2)
         # безразмерное число Рэлея
         self.Ra2= Tab_1("T", tcp, "Pr") * ((9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
-            Tab_1("T", tcp, "v")) ** 2)
-        # Общая теплота
-        Q=U*I
-        # теплота, отведенная излучением
-        Qi=5.67*self.sourse["stp"]*abs(((tcp+273)/100)**4-((self.sourse["tin"]-tcp+273)/100)**4)*F
-        # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
-        Qk=Q-Qi
+                (Tab_1("T", tcp, "v")/10**6)) ** 2)
+
 
     # Эта функция обрабатывает результаты третьего опыта
     def experience_3 (self):
@@ -110,20 +118,24 @@ class Lab_1():
         # Температура в точках модели
         t=[191, 194, 199, 203, 209, 208, 205, 201, 197, 193]
         # площадь поверхности теплообмена
-        F = pi * self.d * self.l
+        F = math.pi * self.d * self.l
         # Средняя температура на поверхности модели
-        tcp= mean(t)
-        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
-        self.Nu3= Tab_1("T", tcp, "a") * self.d / Tab_1("T", tcp, "Lamd")
-        # безразмерное число Рэлея
-        self.Ra3= Tab_1("T", tcp, "Pr") * ((9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
-            Tab_1("T", tcp, "v")) ** 2)
+        tcp = mean(t)
         # Общая теплота
-        Q=U*I
+        Q = U * I
         # теплота, отведенная излучением
-        Qi=5.67*self.sourse["stp"]*abs(((tcp+273)/100)**4-((self.sourse["tin"]-tcp+273)/100)**4)*F
+        Qi = 5.67 * 0.05 * abs(
+            ((tcp + 273) / 100) ** 4 - ((self.sourse["tin"] - tcp + 273) / 100) ** 4) * F
         # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
-        Qk=Q-Qi
+        Qk = Q - Qi
+        # Коэфициент теплоотдачи
+        a = Qk / (abs(tcp - self.sourse["tin"]) * F)
+        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
+        self.Nu3 = a * self.d / (Tab_1("T", tcp, "Lamd") / 10 ** 2)
+        # безразмерное число Рэлея
+        self.Ra3 = Tab_1("T", tcp, "Pr") * (
+                    (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
+                (Tab_1("T", tcp, "v") / 10 ** 6)) ** 2)
 
     # Эта функция обрабатывает результаты четвертого опыта
     def experience_4 (self):
@@ -134,20 +146,24 @@ class Lab_1():
         # Температура в точках модели
         t=[288, 295, 298, 312, 314, 313, 306, 302, 282, 290]
         # площадь поверхности теплообмена
-        F = pi * self.d * self.l
+        F = math.pi * self.d * self.l
         # Средняя температура на поверхности модели
-        tcp= mean(t)
-        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
-        self.Nu4= Tab_1("T", tcp, "a") * self.d / Tab_1("T", tcp, "Lamd")
-        # безразмерное число Рэлея
-        self.Ra4= Tab_1("T", tcp, "Pr") * ((9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
-            Tab_1("T", tcp, "v")) ** 2)
+        tcp = mean(t)
         # Общая теплота
-        Q=U*I
+        Q = U * I
         # теплота, отведенная излучением
-        Qi=5.67*self.sourse["stp"]*abs(((tcp+273)/100)**4-((self.sourse["tin"]-tcp+273)/100)**4)*F
+        Qi = 5.67 * 0.05 * abs(
+            ((tcp + 273) / 100) ** 4 - ((self.sourse["tin"] - tcp + 273) / 100) ** 4) * F
         # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
-        Qk=Q-Qi
+        Qk = Q - Qi
+        # Коэфициент теплоотдачи
+        a = Qk / (abs(tcp - self.sourse["tin"]) * F)
+        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
+        self.Nu4 = a * self.d / (Tab_1("T", tcp, "Lamd") / 10 ** 2)
+        # безразмерное число Рэлея
+        self.Ra4 = Tab_1("T", tcp, "Pr") * (
+                    (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
+                (Tab_1("T", tcp, "v") / 10 ** 6)) ** 2)
 
     # Эта функция обрабатывает результаты пятого опыта
     def experience_5 (self):
@@ -158,20 +174,24 @@ class Lab_1():
         # Температура в точках модели
         t=[385, 390, 399, 408, 414, 415, 405, 402, 395, 387]
         # площадь поверхности теплообмена
-        F = pi * self.d * self.l
+        F = math.pi * self.d * self.l
         # Средняя температура на поверхности модели
-        tcp= mean(t)
-        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
-        self.Nu5= Tab_1("T", tcp, "a") * self.d / Tab_1("T", tcp, "Lamd")
-        # безразмерное число Рэлея
-        self.Ra5= Tab_1("T", tcp, "Pr") * ((9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
-            Tab_1("T", tcp, "v")) ** 2)
+        tcp = mean(t)
         # Общая теплота
-        Q=U*I
+        Q = U * I
         # теплота, отведенная излучением
-        Qi=5.67*self.sourse["stp"]*abs(((tcp+273)/100)**4-((self.sourse["tin"]-tcp+273)/100)**4)*F
+        Qi = 5.67 * 0.05 * abs(
+            ((tcp + 273) / 100) ** 4 - ((self.sourse["tin"] - tcp + 273) / 100) ** 4) * F
         # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
-        Qk=Q-Qi
+        Qk = Q - Qi
+        # Коэфициент теплоотдачи
+        a = Qk / (abs(tcp - self.sourse["tin"]) * F)
+        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
+        self.Nu5 = a * self.d / (Tab_1("T", tcp, "Lamd") / 10 ** 2)
+        # безразмерное число Рэлея
+        self.Ra5 = Tab_1("T", tcp, "Pr") * (
+                    (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
+                (Tab_1("T", tcp, "v") / 10 ** 6)) ** 2)
 
     # Эта функция обрабатывает результаты шестого опыта
     def experience_6 (self):
@@ -182,41 +202,46 @@ class Lab_1():
         # Температура в точках модели
         t=[483, 489, 499, 520, 519, 515, 508, 492, 490, 485]
         # площадь поверхности теплообмена
-        F = pi * self.d * self.l
+        F = math.pi * self.d * self.l
         # Средняя температура на поверхности модели
-        tcp= mean(t)
-        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
-        self.Nu6= Tab_1("T", tcp, "a") * self.d / Tab_1("T", tcp, "Lamd")
-        # безразмерное число Рэлея
-        self.Ra6= Tab_1("T", tcp, "Pr") * ((9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
-            Tab_1("T", tcp, "v")) ** 2)
+        tcp = mean(t)
         # Общая теплота
-        Q=U*I
+        Q = U * I
         # теплота, отведенная излучением
-        Qi=5.67*self.sourse["stp"]*abs(((tcp+273)/100)**4-((self.sourse["tin"]-tcp+273)/100)**4)*F
+        Qi = 5.67 * 0.05 * abs(
+            ((tcp + 273) / 100) ** 4 - ((self.sourse["tin"] - tcp + 273) / 100) ** 4) * F
         # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
-        Qk=Q-Qi
+        Qk = Q - Qi
+        # Коэфициент теплоотдачи
+        a = Qk / (abs(tcp - self.sourse["tin"]) * F)
+        # безразмерное число Нуссельта (безразмерный коэффициент теплоотдачи)
+        self.Nu6 = a * self.d / (Tab_1("T", tcp, "Lamd") / 10 ** 2)
+        # безразмерное число Рэлея
+        self.Ra6 = Tab_1("T", tcp, "Pr") * (
+                    (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
+                (Tab_1("T", tcp, "v") / 10 ** 6)) ** 2)
 
     #Эта функция обрабатывает реальный паропровод
     def steam(self):
         #Определяем коэфициент n
-        n=mean(segmentation([log(self.Nu1), log(self.Nu2), log(self.Nu3), log(self.Nu4), log(self.Nu5), log(self.Nu6)],
-                     [log(self.Ra1), log(self.Ra2), log(self.Ra3), log(self.Ra4), log(self.Ra5), log(self.Ra6)]))
+        n=mean(segmentation([math.log(self.Nu1), math.log(self.Nu2), math.log(self.Nu3), math.log(self.Nu4), math.log(self.Nu5), math.log(self.Nu6)],
+                            [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]))
         ##Определяем коэфициент c
         c=self.Nu1/self.Ra1**n
         #Опредедяем площадь теплообмена паровровода
-        F = pi * self.D * self.L
+        F = math.pi * self.D * self.L
         # теплота, отведенная излучением
         Qi = 5.67 * self.sourse["stp"] * abs(
             ((mean(self.ti) + 273) / 100) ** 4 - ((self.sourse["tout"] - mean(self.ti) + 273) / 100) ** 4) * F
         # теплота Q, отводимая от поверхности, Вт, отдается конвекцией
         Qk =Tab_1("T", self.sourse["tout"], "a")*abs(mean(self.ti)-self.sourse["tout"])*F
         # Общая теплота
-        Q = Qk * Qi
+        Q = Qk + Qi
+        print(n, c, self.Nu2, self.Ra2)
 
     def chart(self):
-        x1=[log(self.Nu1), log(self.Nu2), log(self.Nu3), log(self.Nu4), log(self.Nu5), log(self.Nu6)]
-        y1 = [log(self.Ra1), log(self.Ra2), log(self.Ra3), log(self.Ra4), log(self.Ra5), log(self.Ra6)]
+        x1=[math.log(self.Nu1), math.log(self.Nu2), math.log(self.Nu3), math.log(self.Nu4), math.log(self.Nu5), math.log(self.Nu6)]
+        y1 = [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]
         # Создаём пустой график
         fig, ax = plt.subplots()
         # Добавляем сетку значений
