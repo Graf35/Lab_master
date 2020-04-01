@@ -238,11 +238,10 @@ class Lab_1():
         Qk =Tab_1("T", self.sourse["tout"], "a")*abs(mean(self.ti)-self.sourse["tout"])*F
         # Общая теплота
         Q = Qk + Qi
-        print(n, c)
 
     def chart(self):
-        x1=[math.log(self.Nu6), math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2), math.log(self.Nu1)]
-        y1 = [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]
+        x1=[math.log(self.Nu6),  math.log(self.Nu1)]
+        y1 = [math.log(self.Ra1), math.log(self.Ra6)]
         # Создаём пустой график
         fig, ax = plt.subplots()
         # Добавляем сетку значений
@@ -254,5 +253,7 @@ class Lab_1():
         ax.set_title(u'Логарифмическая зависимость Nu от Ra')
         # Рисуем линию конденсационного режима
         ax.plot(x1, y1, color='green', marker='o')
+        ax.scatter([math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2)],
+                   [math.log(self.Ra2),math.log(self.Ra3),math.log(self.Ra4),math.log(self.Ra5)], marker='o', c='r', edgecolor='b')
         # Показываем график
         plt.show()
