@@ -248,6 +248,6 @@ class Lab_1():
             "Nu": [math.log(self.Nu6), math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2), math.log(self.Nu1)],
             "Ra": [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]})
         sns.set_style("white")
-        gridobj = sns.lmplot(x="Nu", y="Ra", data=df, height=7, robust=True, palette='Set1', scatter_kws=dict(s=60, linewidths=.7, edgecolors='black'))
+        gridobj = sns.lmplot(x="Ra", y="Nu", data=df, height=7, robust=True, palette='Set1', scatter_kws=dict(s=60, linewidths=.7, edgecolors='black'))
         # Показываем график
         plt.show()
