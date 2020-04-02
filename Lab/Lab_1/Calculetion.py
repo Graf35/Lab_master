@@ -10,6 +10,10 @@ from statistics import mean
 import matplotlib.pyplot as plt
 import math
 from Sourse import Tab_1
+import seaborn as sns
+import pandas as pd
+
+
 
 
 #Применяем настройки логирования
@@ -240,20 +244,10 @@ class Lab_1():
         Q = Qk + Qi
 
     def chart(self):
-        x1=[math.log(self.Nu6),  math.log(self.Nu1)]
-        y1 = [math.log(self.Ra1), mean([math.log(self.Ra1), math.log(self.Ra2),math.log(self.Ra3),math.log(self.Ra4),math.log(self.Ra5), math.log(self.Ra6)])]
-        # Создаём пустой график
-        fig, ax = plt.subplots()
-        # Добавляем сетку значений
-        ax.grid()
-        # Подписываем координатные оси
-        ax.set_xlabel(u'Nu')
-        ax.set_ylabel(u'Ra')
-        # Добавляем заголовок графика
-        ax.set_title(u'Логарифмическая зависимость Nu от Ra')
-        # Рисуем линию конденсационного режима
-        ax.plot(x1, y1, color='green', marker='o')
-        ax.scatter([math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2),  math.log(self.Nu1)],
-                   [math.log(self.Ra2),math.log(self.Ra3),math.log(self.Ra4),math.log(self.Ra5), math.log(self.Ra6)], marker='o', c='r', edgecolor='b')
+        df = pd.DataFrame({
+            "Nu": [math.log(self.Nu6), math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2), math.log(self.Nu1)],
+            "Ra": [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]})
+        sns.set_style("white")
+        gridobj = sns.lmplot(x="Nu", y="Ra", data=df, height=7, robust=True, palette='Set1', scatter_kws=dict(s=60, linewidths=.7, edgecolors='black'))
         # Показываем график
         plt.show()
