@@ -84,6 +84,10 @@ class Lab_1():
         self.Ra1 = Tab_1("T", self.sourse["tin"], "Pr") * (
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
+        Word.record({"tc1": tcp, "lamd1":Tab_1("T", tcp, "Lamd"), "v1": Tab_1("T", self.sourse["tin"], "v"),
+                     "Pr1": round(Tab_1("T", self.sourse["tin"], "Pr")), "B1": round((1 / (self.sourse["tin"] + 273.15)),2),
+                     "Q1": round(Q, 2), "Qk1": round(Qk, 2), "Qi1": round(Qi, 2), "a1": round(a, 2), "Ra1": round(self.Ra1, 2),
+                     "Nu1": round(self.Nu1, 2)})
 
     # Эта функция обрабатывает результаты второго опыта
     def experience_2 (self):
@@ -112,6 +116,12 @@ class Lab_1():
         self.Ra2= Tab_1("T", self.sourse["tin"], "Pr") * (
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
+        Word.record({"tc2": tcp, "lamd2": Tab_1("T", tcp, "Lamd"), "v2": Tab_1("T", self.sourse["tin"], "v"),
+                     "Pr2": round(Tab_1("T", self.sourse["tin"], "Pr")),
+                     "B2": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "Q2": round(Q, 2), "Qk2": round(Qk, 2), "Qi2": round(Qi, 2), "a2": round(a, 2),
+                     "Ra2": round(self.Ra2, 2),
+                     "Nu2": round(self.Nu2, 2)})
 
 
     # Эта функция обрабатывает результаты третьего опыта
@@ -141,6 +151,12 @@ class Lab_1():
         self.Ra3 =Tab_1("T", self.sourse["tin"], "Pr") * (
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
+        Word.record({"tc3": tcp, "lamd3": Tab_1("T", tcp, "Lamd"), "v3": Tab_1("T", self.sourse["tin"], "v"),
+                     "Pr3": round(Tab_1("T", self.sourse["tin"], "Pr")),
+                     "B3": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "Q3": round(Q, 2), "Qk3": round(Qk, 2), "Qi3": round(Qi, 2), "a3": round(a, 2),
+                     "Ra3": round(self.Ra3, 2),
+                     "Nu3": round(self.Nu3, 2)})
 
     # Эта функция обрабатывает результаты четвертого опыта
     def experience_4 (self):
@@ -169,6 +185,12 @@ class Lab_1():
         self.Ra4 = Tab_1("T", self.sourse["tin"], "Pr") * (
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
+        Word.record({"tc4": tcp, "lamd4": Tab_1("T", tcp, "Lamd"), "v4": Tab_1("T", self.sourse["tin"], "v"),
+                     "Pr4": round(Tab_1("T", self.sourse["tin"], "Pr")),
+                     "B4": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "Q4": round(Q, 2), "Qk4": round(Qk, 2), "Qi4": round(Qi, 2), "a4": round(a, 2),
+                     "Ra4": round(self.Ra4, 2),
+                     "Nu4": round(self.Nu4, 2)})
 
     # Эта функция обрабатывает результаты пятого опыта
     def experience_5 (self):
@@ -197,6 +219,12 @@ class Lab_1():
         self.Ra5 = Tab_1("T", self.sourse["tin"], "Pr") * (
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
+        Word.record({"tc5": tcp, "lamd5": Tab_1("T", tcp, "Lamd"), "v5": Tab_1("T", self.sourse["tin"], "v"),
+                     "Pr5": round(Tab_1("T", self.sourse["tin"], "Pr")),
+                     "B5": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "Q5": round(Q, 2), "Qk5": round(Qk, 2), "Qi5": round(Qi, 2), "a5": round(a, 2),
+                     "Ra5": round(self.Ra5, 2),
+                     "Nu5": round(self.Nu5, 2)})
 
     # Эта функция обрабатывает результаты шестого опыта
     def experience_6 (self):
@@ -225,6 +253,12 @@ class Lab_1():
         self.Ra6 = Tab_1("T", self.sourse["tin"], "Pr") * (
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
+        Word.record({"tc6": tcp, "lamd6": Tab_1("T", tcp, "Lamd"), "v6": Tab_1("T", self.sourse["tin"], "v"),
+                     "Pr6": round(Tab_1("T", self.sourse["tin"], "Pr")),
+                     "B6": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "Q6": round(Q, 2), "Qk6": round(Qk, 2), "Qi6": round(Qi, 2), "a6": round(a, 2),
+                     "Ra6": round(self.Ra6, 2),
+                     "Nu6": round(self.Nu6, 2)})
 
     #Эта функция обрабатывает реальный паропровод
     def steam(self, parent):
@@ -253,6 +287,7 @@ class Lab_1():
         Qk =Tab_1("T", self.sourse["tout"], "a")*abs(mean(self.ti)-self.sourse["tout"])*F
         # Общая теплота
         Q = Qk + Qi
+        Word.record({"c": round(c, 2), "n": round(n, 2), "Qi": round(Qi, 2), "Qk": round(Qk, 2), "Q": round(Q, 2),})
 
     def chart(self, parent):
         parent.label_2.setText("Начал построение графика. Это может занять продолжительное время.")
@@ -262,4 +297,18 @@ class Lab_1():
         sns.set_style("whitegrid")
         gridobj = sns.lmplot(x="Ra", y="Nu", data=df, height=7, robust=True, palette='Set1', scatter_kws=dict(s=60, linewidths=.7, edgecolors='black'))
         plt.savefig('Charts\Lab_1.png')
+
+    # Эта функция сохняет данные word
+    def save(self,parent):
+        parent.label_2.setText("Введите ваши инициалы и фамилию")
+        Name = dialog(parent)
+        # Записываем имя автора работы
+        Word.record({"Name": Name, "Soursetin": self.sourse['tin'],"Soursetout": self.sourse['tout'], "Soursestp": self.sourse['stp']})
+        # Делаем запись в журнале
+        info("Начал записывать файл doxc")
+        # Производим сохранение данных
+        Word.save()
+        # Делаем запись в журнале
+        info("Закончил записывать файл doxc")
+        parent.label_2.setText("Расчёт ОКОНЧЕН! Можете скачать файл Lab_1")
 

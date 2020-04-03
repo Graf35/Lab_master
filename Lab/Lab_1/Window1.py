@@ -67,3 +67,4 @@ class Window(QtWidgets.QMainWindow, ui):
         self.clas.experience_6()
         self.clas.chart(self)
         self.clas.steam(self)
+        self.clas.save(self)
