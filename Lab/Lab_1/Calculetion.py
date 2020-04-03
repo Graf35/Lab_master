@@ -227,12 +227,23 @@ class Lab_1():
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
 
     #Эта функция обрабатывает реальный паропровод
-    def steam(self):
+    def steam(self, parent):
+        parent.Pixmap('Charts\Lab_1.png')
+        parent.label_2.setText("По графику необходимо отпеделить координаты 2 точек, принадлежащих прямой \n Введите x1:")
+        x1=float(dialog(parent))
+        parent.label_2.setText(
+            "По графику необходимо отпеделить координаты 2 точек, принадлежащих прямой \n Введите y1:")
+        y1 =float(dialog(parent))
+        parent.label_2.setText(
+            "По графику необходимо отпеделить координаты 2 точек, принадлежащих прямой \n Введите x2:")
+        x2 =float(dialog(parent))
+        parent.label_2.setText(
+            "По графику необходимо отпеделить координаты 2 точек, принадлежащих прямой \n Введите y2:")
+        y2 =float(dialog(parent))
         #Определяем коэфициент n
-        n=mean(segmentation([math.log(self.Nu6), math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2), math.log(self.Nu1)],
-                            [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]))
+        n=((y2-y1)/(x2-x1))
         #Определяем коэфициент c
-        c=self.Nu1/self.Ra6**n
+        c=y1/x1**n
         #Опредедяем площадь теплообмена паровровода
         F = math.pi * self.D * self.L
         # теплота, отведенная излучением
@@ -243,11 +254,12 @@ class Lab_1():
         # Общая теплота
         Q = Qk + Qi
 
-    def chart(self):
+    def chart(self, parent):
+        parent.label_2.setText("Начал построение графика. Это может занять продолжительное время.")
         df = pd.DataFrame({
             "Nu": [math.log(self.Nu6), math.log(self.Nu5), math.log(self.Nu4), math.log(self.Nu3), math.log(self.Nu2), math.log(self.Nu1)],
             "Ra": [math.log(self.Ra1), math.log(self.Ra2), math.log(self.Ra3), math.log(self.Ra4), math.log(self.Ra5), math.log(self.Ra6)]})
-        sns.set_style("white")
+        sns.set_style("whitegrid")
         gridobj = sns.lmplot(x="Ra", y="Nu", data=df, height=7, robust=True, palette='Set1', scatter_kws=dict(s=60, linewidths=.7, edgecolors='black'))
-        # Показываем график
-        plt.show()
+        plt.savefig('Charts\Lab_1.png')
+
