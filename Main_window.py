@@ -1,15 +1,7 @@
 #Эти библиотеки позволяют работать с графикой.
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import  QFileDialog
-from PyQt5.QtGui import QPixmap
 from PyQt5 import  uic
-import Window
-import sys
-#Этот модуль позволяет использовать многопоточность
-import threading
-import subprocess
-import os
-
+from Lab.Lab_1 import Window1
 #Определяем имяи путь до файлас формой окна.
 ui=uic.loadUiType("Main_window.ui")[0]
 
@@ -22,7 +14,7 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         super().__init__()
         self.setupUi(self)
         # Прописываем действие на нажатие кнопки
-        self.pushButton.clicked.connect(self.btnClicked)
+        self.pushButton.clicked.connect(self.btnClicked1)
         self.pushButton_2.clicked.connect(self.btnClicked)
         self.pushButton_3.clicked.connect(self.btnClicked)
         self.pushButton_4.clicked.connect(self.btnClicked)
@@ -31,11 +23,11 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
 
 
 
-    #Этот метод описывает действи при нажатии кнопки
+    #Этот метод описывает действи при нажатии кнопки 1
+    def btnClicked1(self):
+        self.window =Window1.Window() # Создаём объект класса
+        self.window.show()  # Показываем ок
+
+    # Заглушка
     def btnClicked(self):
-        self.Windos()
-
-
-    def Windos(self):
-        self.window = Window.Window()  # Создаём объект класса
-        self.window.show()  # Показываем окно
+        pass
