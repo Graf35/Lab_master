@@ -85,7 +85,7 @@ class Lab_1():
                     (9.81 * (1 / (self.sourse["tin"] + 273.15)) * abs(tcp - self.sourse["tin"]) * self.d ** 3) / (
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
         Word.record({"tc1": tcp, "lamd1":Tab_1("T", tcp, "Lamd"), "v1": Tab_1("T", self.sourse["tin"], "v"),
-                     "Pr1": round(Tab_1("T", self.sourse["tin"], "Pr")), "B1": round((1 / (self.sourse["tin"] + 273.15)),2),
+                     "Pr1": round(Tab_1("T", self.sourse["tin"], "Pr")), "B1": round((1 / (self.sourse["tin"] + 273.15)),4),
                      "Q1": round(Q, 2), "Qk1": round(Qk, 2), "Qi1": round(Qi, 2), "a1": round(a, 2), "Ra1": round(self.Ra1, 2),
                      "Nu1": round(self.Nu1, 2)})
 
@@ -118,7 +118,7 @@ class Lab_1():
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
         Word.record({"tc2": tcp, "lamd2": Tab_1("T", tcp, "Lamd"), "v2": Tab_1("T", self.sourse["tin"], "v"),
                      "Pr2": round(Tab_1("T", self.sourse["tin"], "Pr")),
-                     "B2": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "B2": round((1 / (self.sourse["tin"] + 273.15)), 4),
                      "Q2": round(Q, 2), "Qk2": round(Qk, 2), "Qi2": round(Qi, 2), "a2": round(a, 2),
                      "Ra2": round(self.Ra2, 2),
                      "Nu2": round(self.Nu2, 2)})
@@ -153,7 +153,7 @@ class Lab_1():
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
         Word.record({"tc3": tcp, "lamd3": Tab_1("T", tcp, "Lamd"), "v3": Tab_1("T", self.sourse["tin"], "v"),
                      "Pr3": round(Tab_1("T", self.sourse["tin"], "Pr")),
-                     "B3": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "B3": round((1 / (self.sourse["tin"] + 273.15)), 4),
                      "Q3": round(Q, 2), "Qk3": round(Qk, 2), "Qi3": round(Qi, 2), "a3": round(a, 2),
                      "Ra3": round(self.Ra3, 2),
                      "Nu3": round(self.Nu3, 2)})
@@ -187,7 +187,7 @@ class Lab_1():
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
         Word.record({"tc4": tcp, "lamd4": Tab_1("T", tcp, "Lamd"), "v4": Tab_1("T", self.sourse["tin"], "v"),
                      "Pr4": round(Tab_1("T", self.sourse["tin"], "Pr")),
-                     "B4": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "B4": round((1 / (self.sourse["tin"] + 273.15)), 4),
                      "Q4": round(Q, 2), "Qk4": round(Qk, 2), "Qi4": round(Qi, 2), "a4": round(a, 2),
                      "Ra4": round(self.Ra4, 2),
                      "Nu4": round(self.Nu4, 2)})
@@ -221,7 +221,7 @@ class Lab_1():
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
         Word.record({"tc5": tcp, "lamd5": Tab_1("T", tcp, "Lamd"), "v5": Tab_1("T", self.sourse["tin"], "v"),
                      "Pr5": round(Tab_1("T", self.sourse["tin"], "Pr")),
-                     "B5": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "B5": round((1 / (self.sourse["tin"] + 273.15)), 4),
                      "Q5": round(Q, 2), "Qk5": round(Qk, 2), "Qi5": round(Qi, 2), "a5": round(a, 2),
                      "Ra5": round(self.Ra5, 2),
                      "Nu5": round(self.Nu5, 2)})
@@ -255,7 +255,7 @@ class Lab_1():
                 (Tab_1("T", self.sourse["tin"], "v") / 10 ** 6)) ** 2)
         Word.record({"tc6": tcp, "lamd6": Tab_1("T", tcp, "Lamd"), "v6": Tab_1("T", self.sourse["tin"], "v"),
                      "Pr6": round(Tab_1("T", self.sourse["tin"], "Pr")),
-                     "B6": round((1 / (self.sourse["tin"] + 273.15)), 2),
+                     "B6": round((1 / (self.sourse["tin"] + 273.15)), 4),
                      "Q6": round(Q, 2), "Qk6": round(Qk, 2), "Qi6": round(Qi, 2), "a6": round(a, 2),
                      "Ra6": round(self.Ra6, 2),
                      "Nu6": round(self.Nu6, 2)})
