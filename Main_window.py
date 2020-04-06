@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import  uic
 from Lab.Lab_1 import Window1
 from Lab.Lab_2 import Window2
+from Lab.Lab_6 import Window6
 
 
 #Определяем имяи путь до файлас формой окна.
@@ -22,16 +23,21 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         self.pushButton_3.clicked.connect(self.btnClicked)
         self.pushButton_4.clicked.connect(self.btnClicked)
         self.pushButton_5.clicked.connect(self.btnClicked)
-        self.pushButton_6.clicked.connect(self.btnClicked)
+        self.pushButton_6.clicked.connect(self.btnClicked6)
 
     # Этот метод описывает действи при нажатии кнопки2
     def btnClicked1(self):
-            self.window = Window1.Window()  # Создаём объект класса
-            self.window.show()
+        self.window = Window1.Window()  # Создаём объект класса
+        self.window.show()
 
     #Этот метод описывает действи при нажатии кнопки2
     def btnClicked2(self):
         self.window = Window2.Window()  # Создаём объект класса
+        self.window.show()
+
+    #Этот метод описывает действи при нажатии кнопки2
+    def btnClicked6(self):
+        self.window = Window6.Window()  # Создаём объект класса
         self.window.show()
 
     #Заглушка Убрать при сборке
