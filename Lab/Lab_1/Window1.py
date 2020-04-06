@@ -27,6 +27,7 @@ class Window(QtWidgets.QMainWindow, ui):
         self.pushButton.clicked.connect(self.btnClicked)
         #Устанавливаем стандартную картинку
         self.Pixmap("Windows\Lab_1.png")
+        self.inpat=0
 
 
     #Этот метод позволяет устанавливать другое изображение на экран
@@ -64,5 +65,6 @@ class Window(QtWidgets.QMainWindow, ui):
         self.clas.experience_4()
         self.clas.experience_5()
         self.clas.experience_6()
-        self.clas.steam()
-        self.clas.chart()
+        self.clas.chart(self)
+        self.clas.steam(self)
+        self.clas.save(self)
