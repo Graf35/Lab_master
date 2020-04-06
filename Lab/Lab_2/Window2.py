@@ -3,8 +3,8 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QPixmap
 from PyQt5 import  uic
-from Lab.Lab_1.File import entry
-import Lab.Lab_1.Calculetion
+from Lab.Lab_2.File import entry
+import Lab.Lab_2.Calculetion
 #Этот модуль позволяет использовать многопоточность
 import threading
 
@@ -15,7 +15,7 @@ ui=uic.loadUiType("Window.ui")[0]
 class Window(QtWidgets.QMainWindow, ui):
     def __init__(self):
         #Объявляем расчётные классы
-        self.clas=Lab.Lab_1.Calculetion.Lab_1()
+        self.clas=Lab.Lab_2.Calculetion.Lab_2()
         #Инициализируем окно
         super().__init__()
         self.setupUi(self)
@@ -26,7 +26,8 @@ class Window(QtWidgets.QMainWindow, ui):
         #Прописываем действие на нажатие кнопки
         self.pushButton.clicked.connect(self.btnClicked)
         #Устанавливаем стандартную картинку
-        self.Pixmap("Windows\Lab_1.png")
+        self.Pixmap("Windows\Lab_2.jpg")
+        self.inpat=0
 
 
     #Этот метод позволяет устанавливать другое изображение на экран
@@ -58,11 +59,19 @@ class Window(QtWidgets.QMainWindow, ui):
 
     def prog(self):
         self.label_2.setText("Продолжаю расчёт")
-        self.clas.experience_1()
-        self.clas.experience_2()
-        self.clas.experience_3()
-        self.clas.experience_4()
-        self.clas.experience_5()
-        self.clas.experience_6()
-        self.clas.steam()
-        self.clas.chart()
+        self.clas.vozduh()
+        self.clas.voda()
+        self.clas.oil()
+        self.clas.chart(self)
+        self.clas.general(self)
+        self.clas.chart2(self)
+        self.clas.gen(self)
+        self.clas.save(self)
+
+
+
+
+
+
+
+
