@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import  uic
 from Lab.Lab_1 import Window1
 from Lab.Lab_2 import Window2
+from Lab.Lab_4 import Window4
 from Lab.Lab_6 import Window6
 #Этот модуль позволяет использовать многопоточность
 import threading
@@ -23,7 +24,7 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         self.pushButton.clicked.connect(self.btnClicked1)
         self.pushButton_2.clicked.connect(self.btnClicked2)
         self.pushButton_3.clicked.connect(self.btnClicked)
-        self.pushButton_4.clicked.connect(self.btnClicked)
+        self.pushButton_4.clicked.connect(self.btnClicked4)
         self.pushButton_5.clicked.connect(self.btnClicked)
         self.pushButton_6.clicked.connect(self.btnClicked6)
 
@@ -46,7 +47,16 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         # Запускаем новый поток
         self.deman2.start()
 
-    #Этот метод описывает действи при нажатии кнопки2
+    # Этот метод описывает действи при нажатии кнопки4
+    def btnClicked4(self):
+        self.window4 = Window4.Window()  # Создаём объект класса
+        self.window4.show()
+        # Объявляем новый поток
+        self.deman4 = threading.Thread(target=self.window4.show())
+        # Запускаем новый поток
+        self.deman4.start()
+
+    #Этот метод описывает действи при нажатии кнопки6
     def btnClicked6(self):
         self.window6 = Window6.Window()  # Создаём объект класса
         self.window6.show()
