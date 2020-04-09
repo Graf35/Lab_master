@@ -1,10 +1,10 @@
 #Эти библиотеки позволяют работать с графикой.
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QFileDialog, QWidget
+from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QPixmap
 from PyQt5 import  uic
-
-
+from Lab.Lab_4.File import entry
+import Lab.Lab_4.Calculetion
 #Этот модуль позволяет использовать многопоточность
 import threading
 
@@ -15,7 +15,7 @@ ui=uic.loadUiType("Window.ui")[0]
 class Window(QtWidgets.QMainWindow, ui):
     def __init__(self):
         #Объявляем расчётные классы
-
+        self.clas=Lab.Lab_4.Calculetion.Lab_4()
         #Инициализируем окно
         super().__init__()
         self.setupUi(self)
@@ -26,7 +26,8 @@ class Window(QtWidgets.QMainWindow, ui):
         #Прописываем действие на нажатие кнопки
         self.pushButton.clicked.connect(self.btnClicked)
         #Устанавливаем стандартную картинку
-        self.Pixmap("Windows\MainWindow.jpg")
+        self.Pixmap("Windows\Lab_4.jpg")
+        self.inpat=0
 
 
     #Этот метод позволяет устанавливать другое изображение на экран
@@ -48,13 +49,25 @@ class Window(QtWidgets.QMainWindow, ui):
         #Определяем путь до файла
         fname = QFileDialog.getOpenFileName(self, 'Open file', '/sourse')[0]
         #Сообщаем значения его переменных в классы
-        #self.cycle.sourse=entry(fname)
+        self.clas.sourse=entry(fname)
         #Сообщаем путь к файлу в классы
-        self.cycle.fname=fname
+        self.clas.fname=fname
         #Объявляем новый поток
         self.deman = threading.Thread(target=self.prog)
         #Запускаем новый поток
         self.deman.start()
+
+    def prog(self):
+        self.label_2.setText("Продолжаю расчёт")
+        self.clas.cal1()
+        self.clas.cal2()
+        self.clas.graf1()
+        self.clas.graf6()
+        self.clas.graf2()
+        self.clas.graf3()
+        self.clas.graf4()
+        self.clas.graf5()
+        self.clas.save(self)
 
 
 

@@ -3,7 +3,7 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -31,6 +31,9 @@
   <property name="windowIcon">
    <iconset>
     <normaloff>Main_icon.ico</normaloff>Main_icon.ico</iconset>
+  </property>
+  <property name="documentMode">
+   <bool>true</bool>
   </property>
   <property name="dockOptions">
    <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
