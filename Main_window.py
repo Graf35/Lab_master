@@ -3,8 +3,9 @@ from PyQt5 import QtWidgets
 from PyQt5 import  uic
 from Lab.Lab_1 import Window1
 from Lab.Lab_2 import Window2
-from Lab.Lab_4 import Window4
 from Lab.Lab_3 import Window3
+from Lab.Lab_4 import Window4
+from Lab.Lab_5 import Window5
 from Lab.Lab_6 import Window6
 #Этот модуль позволяет использовать многопоточность
 import threading
@@ -26,7 +27,7 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         self.pushButton_2.clicked.connect(self.btnClicked2)
         self.pushButton_3.clicked.connect(self.btnClicked3)
         self.pushButton_4.clicked.connect(self.btnClicked4)
-        self.pushButton_5.clicked.connect(self.btnClicked)
+        self.pushButton_5.clicked.connect(self.btnClicked5)
         self.pushButton_6.clicked.connect(self.btnClicked6)
 
     # Этот метод описывает действи при нажатии кнопки2
@@ -48,6 +49,15 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         # Запускаем новый поток
         self.deman2.start()
 
+    # Этот метод описывает действи при нажатии кнопки3
+    def btnClicked3(self):
+        self.window3 = Window3.Window()  # Создаём объект класса
+        self.window3.show()
+        # Объявляем новый поток
+        self.deman3 = threading.Thread(target=self.window3.show())
+        # Запускаем новый поток
+        self.deman3.start()
+
     # Этот метод описывает действи при нажатии кнопки4
     def btnClicked4(self):
         self.window4 = Window4.Window()  # Создаём объект класса
@@ -58,13 +68,13 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         self.deman4.start()
 
     # Этот метод описывает действи при нажатии кнопки3
-    def btnClicked3(self):
-        self.window3 = Window3.Window()  # Создаём объект класса
-        self.window3.show()
+    def btnClicked5(self):
+        self.window5 = Window5.Window()  # Создаём объект класса
+        self.window5.show()
         # Объявляем новый поток
-        self.deman3 = threading.Thread(target=self.window3.show())
+        self.deman5 = threading.Thread(target=self.window5.show())
         # Запускаем новый поток
-        self.deman3.start()
+        self.deman5.start()
 
     #Этот метод описывает действи при нажатии кнопки6
     def btnClicked6(self):
@@ -75,6 +85,3 @@ class MaimWindow(QtWidgets.QMainWindow, ui):
         # Запускаем новый поток
         self.deman6.start()
 
-    #Заглушка Убрать при сборке
-    def btnClicked(self):
-        pass
